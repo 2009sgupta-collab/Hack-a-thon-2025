@@ -1,0 +1,65 @@
+/* Add these rules to your styles.css (or paste into a separate ai.css and include it) */
+
+/* Floating button */
+.ai-floating-btn{
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    background: var(--brand);
+    color: #fff;
+    border: 0;
+    padding: .65rem .9rem;
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(11,107,79,0.18);
+    cursor: pointer;
+    z-index: 1000;
+    font-weight:700;
+  }
+  
+  /* Modal */
+  .ai-modal{
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(8, 30, 22, 0.45);
+    z-index: 1100;
+  }
+  .ai-modal.open, .ai-modal[open]{
+    display: flex;
+  }
+  .ai-modal-panel{
+    width: min(980px, 96%);
+    max-height: 86vh;
+    overflow: auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    border: 1px solid rgba(11,107,79,0.06);
+  }
+  
+  /* Header */
+  .ai-modal-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    margin-bottom:.5rem;
+  }
+  
+  /* Settings */
+  .ai-settings{ display:none; margin-bottom:.5rem; padding: .4rem 0; border-top:1px dashed rgba(0,0,0,0.04); }
+  .ai-settings.open{ display:block; }
+  
+  /* Issue list */
+  .ai-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.75rem; }
+  .issue-item{ padding:.75rem; border-radius:8px; background:#fff; border:1px solid rgba(11,107,79,0.03); box-shadow: 0 8px 18px rgba(10,40,30,0.03); }
+  .issue-item.resolved{ opacity:.6; text-decoration: line-through; }
+  .issue-head{ display:flex; justify-content:space-between; align-items:center; gap:.7rem; margin-bottom:.5rem; }
+  .issue-meta{ display:flex; gap:.5rem; align-items:center; color:var(--muted); font-size:.9rem; }
+  .issue-sev{ background: #f1fcf6; color:var(--brand); padding: .15rem .45rem; border-radius:999px; font-weight:700; }
+  .issue-details{ margin-bottom:.5rem; color:#234; white-space:pre-wrap; }
+  .issue-ai pre.ai-desc{ background:#f8fef6; padding:.6rem; border-radius:6px; white-space:pre-wrap; font-size:.95rem; overflow:auto; }
+  .issue-actions{ display:flex; gap:.5rem; margin-top:.5rem; }

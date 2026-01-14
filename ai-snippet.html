@@ -1,0 +1,76 @@
+<!--
+    Paste this snippet near the end of both index.html and contact.html (just before </body>).
+    It creates a floating "Report issue" button plus modal UI used by ai.js.
+    -->
+    <!-- Floating button -->
+    <button id="aiOpenBtn" class="ai-floating-btn" aria-label="Report an issue">Report issue</button>
+    
+    <!-- Modal -->
+    <div id="aiModal" class="ai-modal" role="dialog" aria-modal="true" aria-labelledby="aiModalTitle" hidden>
+      <div class="ai-modal-panel" role="document">
+        <header class="ai-modal-header">
+          <h2 id="aiModalTitle">Report a problem / Ask the AI</h2>
+          <div>
+            <button id="aiSettingsBtn" class="btn ghost">Settings</button>
+            <button id="aiCloseBtn" class="btn ghost" aria-label="Close">Close</button>
+          </div>
+        </header>
+    
+        <!-- Settings (toggle) -->
+        <section id="aiSettingsPanel" class="ai-settings">
+          <p class="small muted">Optional: paste your OpenAI API key for more detailed AI descriptions. The key is saved only for this tab (sessionStorage).</p>
+          <div style="display:flex;gap:.5rem;align-items:center">
+            <input id="aiApiKey" type="password" placeholder="sk-... (paste your OpenAI key here)" style="flex:1" />
+            <button id="aiSaveKey" class="btn">Save</button>
+          </div>
+          <label style="display:block;margin-top:.5rem">
+            <input id="aiUseOpenAI" type="checkbox" /> Use OpenAI for descriptions (unchecked uses local summarizer)
+          </label>
+        </section>
+    
+        <!-- Form -->
+        <form id="aiForm" class="ai-form">
+          <div>
+            <label for="issue_title">Short title</label>
+            <input id="issue_title" name="issue_title" type="text" placeholder="e.g., 'To-Do not saving'" />
+          </div>
+    
+          <div>
+            <label for="issue_details">Describe the problem</label>
+            <textarea id="issue_details" name="issue_details" rows="5" placeholder="What happened? Steps to reproduce?"></textarea>
+          </div>
+    
+          <div style="display:flex;gap:.5rem;">
+            <div style="flex:1">
+              <label for="issue_severity">Severity</label>
+              <select id="issue_severity" name="issue_severity">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+    
+            <div style="flex:1">
+              <label for="issue_contact">Your email (optional)</label>
+              <input id="issue_contact" name="issue_contact" type="email" placeholder="you@example.com" />
+            </div>
+          </div>
+    
+          <div style="margin-top:.5rem;display:flex;gap:.5rem;align-items:center">
+            <button type="submit" class="btn primary">Submit issue</button>
+            <button type="button" class="btn ghost" onclick="document.getElementById('aiModal').classList.remove('open')">Close</button>
+          </div>
+        </form>
+    
+        <hr>
+    
+        <!-- Issue list (rendered by ai.js) -->
+        <section aria-labelledby="aiListTitle">
+          <h3 id="aiListTitle">Reported issues (local)</h3>
+          <ul id="aiList" class="ai-list" aria-live="polite"></ul>
+        </section>
+      </div>
+    </div>
+    
+    <!-- Note: Include a script tag to load ai.js after this snippet -->
+    <!-- <script src="ai.js"></script> -->
